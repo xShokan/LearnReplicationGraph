@@ -46,7 +46,7 @@ public:
 	void AttachWeapon(AMyProjectCharacter* TargetCharacter);
 
 	/** Make the weapon Fire a Projectile */
-	UFUNCTION(BlueprintCallable, Category="Weapon")
+	UFUNCTION(BlueprintCallable, Category="Weapon", Server, Reliable)
 	void Fire();
 
 protected:

@@ -18,7 +18,7 @@ UTP_WeaponComponent::UTP_WeaponComponent()
 }
 
 
-void UTP_WeaponComponent::Fire()
+void UTP_WeaponComponent::Fire_Implementation()
 {
 	if (Character == nullptr || Character->GetController() == nullptr)
 	{
@@ -79,6 +79,11 @@ void UTP_WeaponComponent::AttachWeapon(AMyProjectCharacter* TargetCharacter)
 	
 	// switch bHasRifle so the animation blueprint can switch to another animation set
 	Character->SetHasRifle(true);
+
+	if (GetOwner())
+	{
+		GetOwner()->SetOwner(Character);
+	}
 
 	// Set up action bindings
 	if (APlayerController* PlayerController = Cast<APlayerController>(Character->GetController()))
